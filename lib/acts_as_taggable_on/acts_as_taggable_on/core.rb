@@ -1,4 +1,4 @@
-module ActsAsTaggableOn::Taggable
+﻿module ActsAsTaggableOn::Taggable
   module Core
     def self.included(base)
       base.send :include, ActsAsTaggableOn::Taggable::Core::InstanceMethods
@@ -158,7 +158,7 @@ module ActsAsTaggableOn::Taggable
         scoped(:select     => select_clause,
                :joins      => joins.join(" "),
                :group      => group,
-               :conditions => conditions.join(" AND "),
+               :conditions => conditions.join(" AND ") + options[:conditions],
                :order      => options[:order],
                :readonly   => false)
       end
